@@ -26,4 +26,43 @@ const figureParts=document.querySelectorAll('.figure-part');
     }
      
  }
+// Update the Wrong Letters
+function updateWrongLettersEl() {
+    console.log('Update wrong');
+    
+}
+//  show Notification
+function  showNotification() {
+    console.log("show Notification");
+    notification.classList.add("show");
+    setTimeout(() => {
+        notification.classList.remove("show");
+    }, 2000);
+}
+
+//  Keydown letter press
+window.addEventListener("keydown",e=>{
+    console.log(e.keyCode);
+    if(e.keyCode>=65 && e.keyCode<=90){
+        // console.log(123);
+        const letter=e.key;
+        if(selectedWord.includes(letter)){//letter in selectedWord (true)
+            if (!correctLetters.includes(letter)) {//letter is not in correctLetters 
+                correctLetters.push(letter)//push letter in correctLetters array
+                displayWord();
+            }else{
+                showNotification();
+            }
+
+        }else{
+            if (!wrongLetters.includes(letter)) {
+                wrongLetters.push(letter);
+                updateWrongLettersEl()
+                
+            }
+
+        }
+    }
+
+})
  displayWord();
