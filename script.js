@@ -1,13 +1,14 @@
 const wordEl=document.getElementById("word");
 const wrongLettersEl=document.getElementById("wrong-letters");
-const playAgainBtn=document.getElementById("play-button");
+const playAgainBtn=document.getElementById("play-btn");
 const popup=document.getElementById("popup-container");
 const notification=document.getElementById("notification-container");
 const finalMessage=document.getElementById("final-message");
 
 const figureParts=document.querySelectorAll('.figure-part');
+// console.log("figureParts: " figureParts);
 
- const words=['application','programming','interface','wizard'];
+ const words=['application','programming','interface','wizard','clarusway','javascript','reactnative'];
 
  let selectedWord=words[Math.floor(Math.random()*words.length)];
  console.log(selectedWord);
@@ -17,14 +18,19 @@ const figureParts=document.querySelectorAll('.figure-part');
 //Show hidden word
  function displayWord() {
      wordEl.innerHTML=`${selectedWord.split('').map(letter=>`<span class="letter">${correctLetters.includes(letter)? letter :""}</span>`).join("")}`;
+
      const innerWord=wordEl.innerText.replace(/\n/g, "");
-    //  console.log(wordEl.innerText,innerWord);
+     console.log(wordEl.innerText,innerWord);
     if (innerWord===selectedWord) {
+        var createHeartId=setInterval(createHeart, 300);
         finalMessage.innerHTML=`Congratulations! You won! &#128522;`;
         popup.style.display="flex";
+//Clear setInterval
+        setTimeout(function(){
+            clearInterval(createHeartId)},3000);
         
     }
-     
+     return createHeartId
  }
 // Update the Wrong Letters
 function updateWrongLetterttsEl() {
@@ -93,5 +99,36 @@ playAgainBtn.addEventListener("click",()=>{
     displayWord();
     updateWrongLetterttsEl();
     popup.style.display='none';
+    
+   
 })
  displayWord();
+
+ const btn = document.getElementById("btn");
+
+btn.addEventListener("click", () => {
+    document.body.style.background = randomBg();
+});
+
+function randomBg() {
+    return `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
+}
+
+//Hart
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+    heart.innerText = "🧿";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 3000);
+}
+
+// setInterval(createHeart, 300);a

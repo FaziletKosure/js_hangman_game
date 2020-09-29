@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #34495e;
+  background-color: #00aaff;
+  background: linear-gradient(to right, #e28bf7, #e85aa6);
   color: #fff;
   /* text-align: center; */
   display: flex;
@@ -12,6 +15,7 @@ body {
   height: 80vh;
   margin: 0;
   overflow: hidden;
+  font-family: "Poppins", sans-serif;
 }
 h1 {
   margin: 20px 0 0;
@@ -112,4 +116,38 @@ h1 {
 }
 .notification-container.show {
   transform: translateY(-50px);
+}
+button {
+  background-color: rebeccapurple;
+  color: white;
+  padding: 1rem;
+  font-family: inherit;
+  font-size: 1.2rem;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+  border: none;
+  transition: transform 0.1s linear;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  box-shadow: 0;
+  transform: translate(2px, 2px);
+}
+
+.heart {
+  position: fixed;
+  top: -1vh;
+  font-size: 2rem;
+  transform: translateY(0);
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(105vh);
+  }
 }
