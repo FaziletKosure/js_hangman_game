@@ -20,20 +20,20 @@ const figureParts=document.querySelectorAll('.figure-part');
  }
  const words=Object.keys(meaning);
 
-console.log(Object.keys(meaning));
+// console.log(Object.keys(meaning));
  let selectedWord=words[Math.floor(Math.random()*words.length)];
  console.log(selectedWord);
 //  meaningMessage
      mainingMessage.innerText= meaning[selectedWord]
- const correctLetters=[];
 
+ const correctLetters=[];
  const wrongLetters=[];
 //Show hidden word
  function displayWord() {
      wordEl.innerHTML=`${selectedWord.split('').map(letter=>`<span class="letter">${correctLetters.includes(letter)? letter :""}</span>`).join("")}`;
 
      const innerWord=wordEl.innerText.replace(/\n/g, "");
-     console.log(wordEl.innerText,innerWord);
+    //  console.log(wordEl.innerText,innerWord);
     if (innerWord===selectedWord) {
         var createHeartId=setInterval(createHeart, 300);
         finalMessage.innerHTML=`Congratulations! You won! &#128522;`;
@@ -48,7 +48,7 @@ console.log(Object.keys(meaning));
 // Update the Wrong Letters
 function updateWrongLetterttsEl() {
     //Display wrong letters
-    console.log('Update wrong');
+    // console.log('Update wrong');
     wrongLettersEl.innerHTML=`${wrongLetters.length>0? '<p>Wrong</p>':""} ${wrongLetters.map(letter=>`<span>${letter}</span>`)}`
     //Display parts
     figureParts.forEach((part,index)=>{
@@ -70,7 +70,7 @@ function updateWrongLetterttsEl() {
 }
 //  show Notification
 function  showNotification() {
-    console.log("show Notification");
+    // console.log("show Notification");
     notification.classList.add("show");
     setTimeout(() => {
         notification.classList.remove("show");
@@ -79,7 +79,7 @@ function  showNotification() {
 
 //  Keydown letter press
 window.addEventListener("keydown",e=>{
-    console.log(e.keyCode);
+    // console.log(e.keyCode);
     if(e.keyCode>=65 && e.keyCode<=90){
         // console.log(123);
         const letter=e.key;
