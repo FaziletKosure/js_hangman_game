@@ -4,16 +4,29 @@ const playAgainBtn=document.getElementById("play-btn");
 const popup=document.getElementById("popup-container");
 const notification=document.getElementById("notification-container");
 const finalMessage=document.getElementById("final-message");
+const mainingMessage=document.getElementById("meaning");
 
 const figureParts=document.querySelectorAll('.figure-part');
 // console.log("figureParts: " figureParts);
 
- const words=['application','programming','interface','wizard','clarusway','javascript','reactnative'];
+ const meaning={
+     javascript:"is a programming language that conforms to the ECMAScript specification",
+     reactnative:"is an open-source mobile application framework created by Facebook",
+     developer:"a person or company that creates new products, especially software, or services",
+     frontend:" of a website is the part that users interact with.",
+     backend:"of a website consists of a server, an application, and a database.",
+     clarusway:"is a brand new coding school designed for beginners to become world class software developers."
 
+ }
+ const words=Object.keys(meaning);
+
+console.log(Object.keys(meaning));
  let selectedWord=words[Math.floor(Math.random()*words.length)];
  console.log(selectedWord);
+//  meaningMessage
+     mainingMessage.innerText= meaning[selectedWord]
  const correctLetters=[];
-//  const correctLetters=["w","i","z","a","r","d"];
+
  const wrongLetters=[];
 //Show hidden word
  function displayWord() {
@@ -114,7 +127,7 @@ function randomBg() {
     return `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
 }
 
-//Hart
+//nazar
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
