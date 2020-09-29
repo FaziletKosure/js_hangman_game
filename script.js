@@ -24,12 +24,13 @@ const figureParts=document.querySelectorAll('.figure-part');
  let selectedWord=words[Math.floor(Math.random()*words.length)];
  console.log(selectedWord);
 //  meaningMessage
-     mainingMessage.innerText= meaning[selectedWord]
+   
 
  const correctLetters=[];
  const wrongLetters=[];
 //Show hidden word
  function displayWord() {
+    mainingMessage.innerText= meaning[selectedWord]
      wordEl.innerHTML=`${selectedWord.split('').map(letter=>`<span class="letter">${correctLetters.includes(letter)? letter :""}</span>`).join("")}`;
 
      const innerWord=wordEl.innerText.replace(/\n/g, "");
