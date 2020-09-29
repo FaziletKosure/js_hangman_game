@@ -76,11 +76,11 @@ function  showNotification() {
         notification.classList.remove("show");
     }, 2000);
 }
-
+const tr=[219,221,186,222,191,220]
 //  Keydown letter press
 window.addEventListener("keydown",e=>{
     // console.log(e.keyCode);
-    if(e.keyCode>=65 && e.keyCode<=90){
+    if(e.keyCode>=65 && e.keyCode<=90 || tr.includes(e.keyCode)){
         // console.log(123);
         const letter=e.key;
         if(selectedWord.includes(letter)){//letter in selectedWord (true)
@@ -121,6 +121,7 @@ playAgainBtn.addEventListener("click",()=>{
 
 btn.addEventListener("click", () => {
     document.body.style.background = randomBg();
+   
 });
 
 function randomBg() {
